@@ -39,6 +39,15 @@ export default class CarouselPager extends Component {
     height: 0
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.children.length !== this.props.children.length) {
+      this.setState(() => ({
+        width: 0,
+        height: 0
+      }));
+    }
+  }
+
   _getPosForPage(pageNb) {
     return -pageNb * this._boxSizeInterval;
   }
